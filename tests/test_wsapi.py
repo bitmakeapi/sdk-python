@@ -30,7 +30,7 @@ class BitMakeWebsocketApiClientTests(unittest.IsolatedAsyncioTestCase):
         start = self.ws_client._current_timestamp()
         await self.ws_client.subscribe('diffMergedDepth', {'symbol': TEST_SPOT_SYMBOL})
         while self.ws_client.connected:
-            data = await self.ws_client.recv()
+            data = await self.ws_client.recv_data()
             self.log.debug("test_subscribe recv data: %s", data)
             now = self.ws_client._current_timestamp()
             if now - start > 120000:

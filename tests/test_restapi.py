@@ -90,6 +90,14 @@ class BitMakeApiClientTests(unittest.TestCase):
             self.assertTrue(is_number(ticker['qv']))
             self.assertTrue(is_number(ticker['m']))
 
+    def test_get_api_key(self) -> None:
+        data = self.api_client.get_api_key()
+        self.assertTrue(isinstance(data['name'], str))
+        self.assertTrue(isinstance(data['userId'], int))
+        self.assertTrue(isinstance(data['parentUserId'], int))
+        self.assertTrue(isinstance(data['accountId'], int))
+        self.assertTrue(isinstance(data['ipWhiteList'], str))
+
     def test_get_balance(self) -> None:
         data = self.api_client.get_balance()
         self.assertTrue(isinstance(data, list))

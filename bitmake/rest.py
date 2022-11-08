@@ -44,6 +44,9 @@ class BitMakeApiClient(ApiClient):
     def get_market_ticker(self, symbol: Optional[str] = None) -> List[dict]:
         return self._get('/t/v1/quote/ticker', params={'symbol': symbol})
 
+    def get_api_key(self) -> dict:
+        return self._get('/u/v1/account/apiKey', sign=True)
+
     def get_balance(self) -> List[dict]:
         return self._get('/f/v1/account/balance', sign=True)
 
